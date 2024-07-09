@@ -1,17 +1,44 @@
+body{
+  background-image: url('../src/assets/photo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .App {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-
   h1 {
-    font-size: 3rem;
+    font-size: 5rem;
+    color: #00FFFF;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    margin-top: 10vh;
   }
 
   .status {
+    color: white;
+    font-size: 30px;
     margin-top: 20px;
   }
-  .reset{
-    margin-top: 20px;
+  .reset {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff; /* Initial background color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .reset:hover {
+    background-color: #0056b3; 
+    transform: scale(1.05); 
+  }
+  
+  .reset:active {
+    transform: scale(0.95); 
   }
 
 }

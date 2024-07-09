@@ -1,6 +1,5 @@
-
-import './App.css'
-import { useState } from "react"
+import './App.css';
+import { useState } from "react";
 import Board from './components/Board';
 
 function App() {
@@ -18,50 +17,50 @@ function App() {
       [2, 5, 8],
       [0, 4, 8],
       [2, 4, 6],
-    ]
-    for(let i = 0; i < squares.length; i++){
+    ];
+    
+    // Corrected the loop to iterate over the lines array
+    for(let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){
         return squares[a];
       }
     }
     return null;
-  }
+  };
 
-  const handleClick = ((index) => {
-
+  const handleClick = (index) => {
     const newBoard = board.slice();
 
     if(calculateWinner(newBoard) || newBoard[index]){
       return;
     }
     newBoard[index] = isXNext ? 'X' : 'O';
+    setBoard(newBoard);
     setIsXNext(!isXNext);
-    setStatus(`Next player : ${isXNext ? 'X' : 'O'}`);
 
     const winner = calculateWinner(newBoard);
     if(winner){
-      setStatus(`Winner is ${winner}`)
-    }else {
-      setStatus(`Next player: ${isXNext} ? 'X' : 'O'`);
+      setStatus(`Winner is ${winner}`);
+    } else {
+      setStatus(`Next player: ${isXNext ? 'O' : 'X'}`); // Corrected the status update
     }
-  })
+  };
 
   const resetGame = () => {
     setBoard(Array(9).fill(null));
     setIsXNext(true);
-    setStatus('Next player: X')
-  }
-
+    setStatus('Next player: X');
+  };
 
   return (
     <div className="App">
-      <h1>Tik-Tac-Toe</h1>
-     <div className="status">{status}</div>
+      <h1>Tic-Tac-Toe</h1>
+      <div className="status">{status}</div>
       <Board squares={board} onClick={handleClick} />
-     <button className='reset' onClick={resetGame}>Reset Game</button>
+      <button className='reset' onClick={resetGame}>Reset Game</button>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
